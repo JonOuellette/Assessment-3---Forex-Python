@@ -9,13 +9,19 @@
     
     <h1>Currency Converter</h1>
 
-    <label for="input_currency">From:</label>
-    <input type="text" name="input_currency" id="input_currency" maxlength="3">
-    <input type="text" name="amount" id="amount" required>
+    <form action="/" method="POST">
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" id="amount" required>
 
-    <label for="output_currency">To:</label>
-    <input type="text" name ="output_currency" id="output_currency" maxlength="3">
+        <label for="from_currency">From:</label>
+        <input type="text" name="from_currency" id="from_currency" maxlength="3">
+    
 
+        <label for="to_currency">To:</label>
+        <input type="text" name ="to_currency" id="to_currency" maxlength="3">
+
+        <input type="submit" value="Convert">
+    </form>       
 
 
 
