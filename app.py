@@ -1,15 +1,13 @@
 from flask import Flask, request, render_template, jsonify 
-from converter import CurrencyExchange
+from converter import CurrencyConverter
 
 app = Flask(__name__)
 
-converter = CurrencyExchange()
+converter = CurrencyConverter()
 
 @app.route('/', methods=['GET', 'POST'])
 def currency_converter():
-    
-
-    
+        
     """Checks for POST request - if it is a POST request it then retrieves the user values for currency codes and amounts"""
     if request.method == 'POST':
         from_currency = request.form['from_currency']
@@ -31,7 +29,7 @@ def currency_converter():
 
         
         """calls on the convert_currency function from the converter file and sets the converted currency to the variable converted_amount"""
-        converted_amount = converter.convert_currency(from_currency, to_currency,amount)
+        converted_amount = converter.convert_currency(from_currency, to_currency, amount)
 
         return render_template("home.html", converted_amount=converted_amount)
 
