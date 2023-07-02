@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,5 +31,58 @@
         <p>Converted Amount: {{ converted_amount}}  </p>
     {% endif %}
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreign Exchange Converter</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    
+    <h1>Currency Converter</h1>
+
+    <div class="form-area">
+    <form action="/" method="POST">
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" id="amount" required>
+        <br>
+
+        <label for="from_currency">From:</label>
+        <select name="from_currency" id="from_currency">
+            {% for currency in currencies %}
+                <option value="{{ currency.code }}">{{currency.code}} -- {{ currency.description }}</option>
+            {% endfor %}
+        </select>
+        
+        <br>
+
+        <label for="to_currency">To:</label>
+        <select name="to_currency" id="to_currency">
+            {% for currency in currencies %}
+                <option value="{{ currency.code }}">{{currency.code}} -- {{ currency.description }} </option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <input type="submit" value="Convert">
+    </form>       
+    </div>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    <div class="container">
+    {% if amount and from_currency and to_currency and converted_amount %}
+        <p id="converting-from">Converting: {{ amount }}  {{ from_currency }}</p>
+        <p id="converting-to">To: {{ to_currency }}</p>
+        <p id="converting-results">Converted Amount: {{ converted_amount }}  {{ to_currency }}</p>
+    {% endif %}
+    </div>    
+    
 </body>
 </html>
