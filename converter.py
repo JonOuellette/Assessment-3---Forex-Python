@@ -13,6 +13,7 @@ class CurrencyConverter:
     def convert_currency(self, from_currency, to_currency, amount):
         conversion_rate = self.converter_api.get_conversion_rate(from_currency, to_currency)
         converted_amount = amount * conversion_rate
-        return self.converter_api.format_currency(converted_amount, to_currency)
+        formatted_amount= self.converter_api.format_currency(converted_amount, to_currency)
+        return formatted_amount
 
 

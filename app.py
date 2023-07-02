@@ -27,10 +27,11 @@ def currency_converter():
             error_msg = "Invalid amount"
             return render_template("home.html", error = error_msg)
 
-        
-        """calls on the convert_currency function from the converter file and sets the converted currency to the variable converted_amount"""
+        # calls on the convert_currency function from the converter file and sets the converted currency to the variable converted_amount
         converted_amount = converter.convert_currency(from_currency, to_currency, amount)
 
         return render_template("home.html", converted_amount=converted_amount)
 
     return render_template("home.html")
+
+
